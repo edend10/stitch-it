@@ -2,6 +2,9 @@ import numpy as np
 import cv2
 import sys
 
+CV_CAP_PROP_POS_FRAMES = 1
+CV_CAP_PROP_FRAME_COUNT = 7
+
 def rotate(img, angle):
     rows,cols,channels = img.shape
     axis_max = max(rows,cols)
@@ -40,16 +43,15 @@ def stitch(src_images):
     rotated_stitched = rotate(stitched, -90)
     return rotated_stitched
 
-def stitch2(src_images):
-    num_imgs = len(src_images)
-    stitcher = cv2.createStitcher()
-    stitched = []
-    images = [rotate(img, 90) for img in src_images]
-    (status, stitched) = stitcher.stitch(images)
-    if status == 0:
-        print("stitched %d images" % (num_imgs))
-    else:
-        sys.exit("Error stitching %d images with status %d" % (num_imgs, status))
+def extract_frames(video_path, frame_step=50):
+    vid_cap = cv2.VideoCapture(video_path)
+    num_frames = int(vid_cap.get(CV_CAP_PROP_FRAME_COUNT))
 
-    rotated_stitched = rotate(stitched, -90)
-    return rotated_stitched
+    images = []
+    for i in range(0, num_frames, frame_step):
+        vid_cap.set(CV_CAP_PROP_POS_FRAMES, i)
+        ret, frame = vid_cap.read()
+        if frame is not None:
+            images.append(frame)
+
+    return images
