@@ -1,4 +1,4 @@
-# StitchIt
+# Stitch It
 Simple utility to create one large screenshot image for pages longer than can fit in the screen.
 
 ## Dependencies:
