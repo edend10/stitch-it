@@ -15,11 +15,9 @@ Simple utility to create one large screenshot image for pages longer than can fi
 
 
 ### Example:
-- `vid_stitch.py`:
-Input screen recording video:
-![input screen recording video](assets/input_video.gif)
-Output generated screenshot image:
-![output generated screenshot image](assets/output_from_video.png)
+| Script               |                           Input                         |                                  Output                            |
+| -------------------- | :------------------------------------------------------:| ----------------------------------------------------------------:  |
+| `vid_stitch.py`      | ![input screen recording video](assets/input_video.gif) | ![output generated screenshot image](assets/output_from_video.png) |
 
 ### Options:
 - `--output`/`-o`: output filename (optional). Default: `output.png`
