@@ -45,7 +45,6 @@ def stitch2(src_images):
     stitcher = cv2.createStitcher()
     stitched = []
     images = [rotate(img, 90) for img in src_images]
-    images.reverse()
     (status, stitched) = stitcher.stitch(images)
     if status == 0:
         print("stitched %d images" % (num_imgs))
