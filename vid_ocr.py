@@ -2,6 +2,7 @@ import cv2
 import argparse
 import sys
 from utils import stitch, extract_frames
+from ocr_utils import extract_text
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-v", "--video", type=str, required=True,
@@ -22,4 +23,7 @@ output_filename = args["output"]
 images = extract_frames(video_path, frame_param_type, frame_param)
 stitched = stitch(images)
 
-cv2.imwrite(output_filename, stitched)
+content = extract_text(stitched)
+
+with open(output_filename, "w") as f:
+    f.write(content)

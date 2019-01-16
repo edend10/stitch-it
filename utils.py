@@ -4,6 +4,7 @@ import sys
 
 CV_CAP_PROP_POS_FRAMES = 1
 CV_CAP_PROP_FRAME_COUNT = 7
+DEFAULT_NUM_OF_SAMPLE_FRAMES = 8
 
 def rotate(img, angle):
     rows,cols,channels = img.shape
@@ -43,9 +44,16 @@ def stitch(src_images):
     rotated_stitched = rotate(stitched, -90)
     return rotated_stitched
 
-def extract_frames(video_path, frame_step=50):
+def extract_frames(video_path, frame_param_type=None, frame_param=None):
     vid_cap = cv2.VideoCapture(video_path)
     num_frames = int(vid_cap.get(CV_CAP_PROP_FRAME_COUNT))
+
+    if not frame_param_type:
+        frame_step = num_frames // DEFAULT_NUM_OF_SAMPLE_FRAMES
+    elif frame_param_type == 'target':
+        frame_step = num_frames // frame_param
+    else:
+        frame_step = frame_param
 
     images = []
     for i in range(0, num_frames, frame_step):
