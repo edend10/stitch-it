@@ -19,7 +19,7 @@ Simple utility to create one large screenshot image for pages longer than can fi
 - `--output`/`-o`: output filename (optional). Default: `output.png`
 for `vid_stitch.py` only:
 - `--video`/`-v`: input video file with screen recording of scrolling down
-- '--frame_param_type`/`-t`: which type is the `frame_param` option. Either `target` or `step`.
+- `--frame_param_type`/`-t`: which type is the `frame_param` option. Either `target` or `step`.
 `step`: size of step in video frames between each sample considered for stitching (optional).
 `target`: number of sample frames to target (approximate).
 
