@@ -23,7 +23,7 @@ for `vid_stitch.py` only:
 `step`: size of step in video frames between each sample considered for stitching (optional).
 `target`: number of sample frames to target (approximate).
 
-for pic_stitch.py` only:
+for `pic_stitch.py` only:
 - `--input`/`-i`: comma delimited (no spaces) input image files. Should be ordered top to bottom
 
 ### Example:
